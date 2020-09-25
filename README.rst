@@ -35,7 +35,7 @@ Installation
 1) Install package with composer:
    ::
 
-      composer require sourcebroker/deployer-extended-database
+      composer require rbouma/deployer-extended-database
 
 2) If you are using deployer as composer package then just put following line in your deploy.php:
    ::
