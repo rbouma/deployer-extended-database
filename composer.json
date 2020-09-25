@@ -1,5 +1,5 @@
 {
-  "name": "sourcebroker/deployer-extended-database",
+  "name": "rbouma/deployer-extended-database",
   "description": "Deployer tasks to manage database synchronization between application instances.",
   "license": "MIT",
   "keywords": [
@@ -9,6 +9,10 @@
     "synchronization"
   ],
   "authors": [
+    {
+      "name": "Rick Bouma",
+      "email": "r.bouma@epartment.nl"
+    },
     {
       "name": "Krystian Szymukowicz",
       "email": "k.szymukowicz@gmail.com"

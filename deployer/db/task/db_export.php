@@ -35,12 +35,12 @@ task('db:export', function () {
                 'type' => '',
             ];
             $mysqlDumpArgs = [
-                'password' => escapeshellarg($databaseConfig['password']),
                 'local/bin/mysqldump' => get('local/bin/mysqldump'),
                 'options' => '',
                 'host' => escapeshellarg($databaseConfig['host']),
                 'port' => escapeshellarg((isset($databaseConfig['port']) && $databaseConfig['port']) ? $databaseConfig['port'] : 3306),
                 'user' => escapeshellarg($databaseConfig['user']),
+                'password' => escapeshellarg($databaseConfig['password']),
                 'dbname' => escapeshellarg($databaseConfig['dbname']),
                 'absolutePath' => '',
                 'ignore-tables' => ''
@@ -62,7 +62,7 @@ task('db:export', function () {
             $mysqlDumpArgs['absolutePath'] = escapeshellarg($fileUtility->normalizeFolder(get('db_storage_path_local'))
                 . implode('#', $filenameParts) . '.sql');
             runLocally(vsprintf(
-                'export MYSQL_PWD=%s && %s %s -h%s -P%s -u%s %s -r%s'
+                '%s %s -h%s -P%s -u%s -p%s %s -r%s'
                 . ((new ConsoleUtility())->getOption('exportTaskAddIgnoreTablesToStructureDump') ? ' %s' : ''),
                 $mysqlDumpArgs
             ));
@@ -73,7 +73,7 @@ task('db:export', function () {
             $mysqlDumpArgs['absolutePath'] = escapeshellarg($fileUtility->normalizeFolder(get('db_storage_path_local'))
                 . implode('#', $filenameParts) . '.sql');
             runLocally(vsprintf(
-                'export MYSQL_PWD=%s && %s %s -h%s -P%s -u%s %s -r%s %s',
+                '%s %s -h%s -P%s -u%s -p%s %s -r%s %s',
                 $mysqlDumpArgs
             ));
         }
